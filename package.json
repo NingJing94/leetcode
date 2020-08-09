@@ -1,0 +1,66 @@
+{
+  "name": "leetcode",
+  "private": true,
+  "description": "LeetCode playground.",
+  "scripts": {
+    "start": "npm test -- --watch",
+    "lint": "npm run lint:es && npm run lint:md",
+    "lint:es": "eslint . --ext .js",
+    "lint:md": "eslint . --ext .md",
+    "lint-fix": "npm run lint-fix:es && npm run lint-fix:md",
+    "lint-fix:es": "npm run lint:es -- --fix",
+    "lint-fix:md": "npm run lint:md -- --fix",
+    "test": "jest",
+    "test-diff": "npm test -- --onlyChanged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NingJing94/leetcode.git"
+  },
+  "keywords": [
+    "leetcode",
+    "algorithm",
+    "javascript"
+  ],
+  "author": "Ning Jing <ningjingtju@126.com> (https://github.com/NingJing94)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NingJing94/leetcode/issues"
+  },
+  "homepage": "https://github.com/NingJing94/leetcode#readme",
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@types/jest": "^26.0.9",
+    "@types/node": "^14.0.27",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "eslint-plugin-markdown": "^1.0.2",
+    "husky": "^4.2.5",
+    "jest": "^26.2.2",
+    "jest-extended": "^0.11.5",
+    "lint-staged": "^10.2.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run test-diff",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint-fix:es"
+    ],
+    "*.md": [
+      "npm run lint-fix:md"
+    ]
+  }
+}
